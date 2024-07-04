@@ -4,12 +4,16 @@
  */
 package autoput1;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -24,6 +28,7 @@ public class AutoputKasa extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public AutoputKasa() {
+        
         initComponents();
         jComboBox1.setModel(new DefaultComboBoxModel<>(Vozilo.vTip));
         jComboBox2.setModel(new DefaultComboBoxModel<>(Dionica.gradovi));
@@ -247,8 +252,14 @@ public class AutoputKasa extends javax.swing.JFrame {
     public static void main(String args[]) {
         
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());            
-        } catch (Exception ex) {  }
+            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); 
+            UIManager.setLookAndFeel( new FlatMacLightLaf());
+            UIManager.put( "Button.arc", 999 );
+            UIManager.put( "Component.arc", 999 );
+            UIManager.put( "ProgressBar.arc", 999 );
+            UIManager.put( "TextComponent.arc", 999 );
+            UIManager.put( "Component.arrowType", "triangle" );
+        } catch (UnsupportedLookAndFeelException ex) {  }
       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
